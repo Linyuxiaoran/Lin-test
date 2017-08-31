@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script>
+function timeStamp(){  
+	var round1 = document.getElementById("round1").value;
+	var get1 = document.getElementById("get1").value;
+	var total = document.getElementById("total").value;
+	var now = document.getElementById("now").value;
+//	alert(round1 + get1 + total +now);
+	var x1 = (parseInt(total) - parseInt(now)) /parseInt(get1); //获取流水线循环次数
+	x2 = parseInt(x1)* parseInt(round1);
+	second_time = parseInt(x2);
+//	alert(second_time);
+	var time = parseInt(second_time) + "秒";  
+	if( parseInt(second_time )> 60){  
+	  
+	    var second = parseInt(second_time) % 60;  
+	    var min = parseInt(second_time / 60);  
+	    time = min + "分" + second + "秒";  
+	      
+	    if( min > 60 ){  
+	        min = parseInt(second_time / 60) % 60;  
+	        var hour = parseInt( parseInt(second_time / 60) /60 );  
+	        time = hour + "小时" + min + "分" + second + "秒";  
+	  
+	        if( hour > 24 ){  
+	            hour = parseInt( parseInt(second_time / 60) /60 ) % 24;  
+	            var day = parseInt( parseInt( parseInt(second_time / 60) /60 ) / 24 );  
+	            time = day + "天" + hour + "小时" + min + "分" + second + "秒";  
+	        }  
+	    }    
+	}  
+	alert("还有" + time + "满仓");
+	return time;          
+	}
+
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	流水线周期是：<input type="text" id="round1"> <br>
+	生产效率是：	<input type="text" id="get1"><br>
+	资源上限是：	<input type="text" id="total"><br>
+	目前资源量是：<input type="text" id="now"><br>
+	<p><button onClick="timeStamp()">计算</button></p>
+</body>
+</html>
